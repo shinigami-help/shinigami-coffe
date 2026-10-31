@@ -1,3 +1,4 @@
+// US-02: detail satu produk dari tabel "produk" di Supabase lewat Server Component.
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import TombolWhatsApp from "@/components/TombolWhatsApp";

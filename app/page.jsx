@@ -1,3 +1,4 @@
+// US-01: katalog diambil dari tabel "produk" di Supabase lewat Server Component.
 import KartuProduk from "@/components/KartuProduk";
 import { toko } from "@/lib/toko";
 import { createClient } from "@/lib/supabase/server";
@@ -21,7 +22,7 @@ export default async function HalamanKatalog() {
       daftarProduk = data || [];
     }
   } catch (err) {
-    pesanError = `Gagal memuat produk: ${err.message}`;
+    pesanError = `Gagal memuat produk: ${err?.message || err}`;
   }
 
   return (
