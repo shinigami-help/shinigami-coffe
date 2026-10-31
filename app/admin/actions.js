@@ -24,8 +24,13 @@ export async function loginAdmin(prevState, formData) {
   let supabase;
   try {
     supabase = await createSessionClient();
-  } catch {
-    return { error: "Gagal masuk: sesi tidak bisa disiapkan di server. Coba lagi." };
+  } catch (err) {
+    return {
+      error:
+        err instanceof Error
+          ? err.message
+          : "Gagal masuk: sesi tidak bisa disiapkan di server. Coba lagi.",
+    };
   }
 
   let hasil;
@@ -69,8 +74,13 @@ export async function gantiPassword(prevState, formData) {
   let supabase;
   try {
     supabase = await createSessionClient();
-  } catch {
-    return { error: "Gagal menyiapkan sesi di server. Coba lagi." };
+  } catch (err) {
+    return {
+      error:
+        err instanceof Error
+          ? err.message
+          : "Gagal menyiapkan sesi di server. Coba lagi.",
+    };
   }
 
   const { data: dataSesi, error: errorSesi } = await supabase.auth.getUser();
